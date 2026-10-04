@@ -1,13 +1,24 @@
-# M2S01-TestesDeUnidade-Semana01
-Testes De Unidade - Semana01
+# Calculadora Console
 
-## Calculadora Console
+Aplicação de console em .NET 10 com operações de soma, subtração, multiplicação e divisão. A lógica de cada operação está disponível em métodos públicos da classe `Calculadora`, permitindo testá-los sem interagir com o console.
 
-O projeto está em `CalculadoraConsole`. Envie a operação, o primeiro valor e o segundo valor, cada um em uma linha. Use ponto como separador decimal.
+## 1. Executar localmente
 
-Operações aceitas: `Soma`, `Subtracao`, `Multiplicacao` e `Divisao` (sem diferenciar maiúsculas de minúsculas).
+É necessário ter o SDK do .NET 10 instalado. Na raiz do repositório, execute:
 
-Exemplo de entrada:
+```bash
+dotnet run --project CalculadoraConsole
+```
+
+O programa lê três linhas, nesta ordem:
+
+1. Operação: `Soma`, `Subtracao`, `Multiplicacao` ou `Divisao`.
+2. Primeiro valor (`Valor1`).
+3. Segundo valor (`Valor2`).
+
+Os nomes das operações não diferenciam maiúsculas de minúsculas. Use ponto como separador decimal. O programa não exibe prompts: depois das três linhas, escreve o resultado no console.
+
+Exemplo de interação:
 
 ```text
 Soma
@@ -15,10 +26,70 @@ Soma
 5
 ```
 
-Saída:
+Resultado:
 
 ```text
 15
 ```
 
-Execute com `dotnet run --project CalculadoraConsole`.
+Também é possível enviar a entrada por pipe:
+
+```bash
+printf 'Soma\n10\n5\n' | dotnet run --project CalculadoraConsole
+```
+
+## 2. Criar e configurar um projeto xUnit
+
+O projeto de testes ainda não foi criado. Quando for iniciar os testes, execute os comandos a seguir na raiz do repositório.
+
+Crie um projeto xUnit:
+
+```bash
+dotnet new xunit --name CalculadoraConsole.Tests --output CalculadoraConsole.Tests --framework net10.0
+```
+
+Adicione uma referência ao projeto da calculadora. Isso permite que os testes acessem a classe pública `Calculadora`:
+
+```bash
+dotnet add CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj reference CalculadoraConsole/CalculadoraConsole.csproj
+```
+
+Compile o projeto de testes e a referência da calculadora:
+
+```bash
+dotnet build CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
+```
+
+Para executar os testes:
+
+```bash
+dotnet test CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
+```
+
+## 3. Primeiro teste unitário: Soma
+
+No projeto xUnit criado acima, substitua o conteúdo do arquivo `CalculadoraConsole.Tests/UnitTest1.cs` pelo exemplo abaixo. O teste chama `Calculadora.Soma` diretamente e compara o resultado esperado com o obtido, sem iniciar a aplicação de console.
+
+```csharp
+using Xunit;
+
+namespace CalculadoraConsole.Tests
+{
+	public class CalculadoraTests
+	{
+		[Fact]
+		public void Soma_DeveSomarDoisValores()
+		{
+			decimal resultado = Calculadora.Soma(2m, 3m);
+
+			Assert.Equal(5m, resultado);
+		}
+	}
+}
+```
+
+Execute o teste com:
+
+```bash
+dotnet test CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
+```
