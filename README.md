@@ -40,7 +40,7 @@ printf 'Soma\n10\n5\n' | dotnet run --project CalculadoraConsole
 
 ## 2. Criar e configurar um projeto xUnit
 
-O projeto de testes ainda não foi criado. Quando for iniciar os testes, execute os comandos a seguir na raiz do repositório.
+Se o projeto de testes ainda não existir, execute os comandos a seguir uma vez na raiz do repositório. Se já existir, pule a criação e a referência e vá direto para o build.
 
 Crie um projeto xUnit:
 
