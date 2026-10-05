@@ -2,11 +2,11 @@
 
 Este guia tem como objetivo orientar a criação do primeiro exercício prático do módulo: replicar a estrutura e a lógica de testes unitários para a classe `Calculadora`.
 
-## Objetivo
+## Atividade 1 — Criar e configurar o projeto de testes
 
-Você deve criar um projeto de testes xUnit para testar a aplicação de calculadora e validar as operações de soma, subtração, multiplicação e divisão.
+Nesta atividade, você vai criar um projeto xUnit, adicioná-lo à solução, referenciar o projeto da calculadora, compilar e executar o teste simples criado pelo template.
 
-## 1. Criar o projeto de testes xUnit
+### 1. Criar o projeto de testes xUnit
 
 Se o projeto de testes ainda não existir, execute o comando abaixo na raiz do repositório:
 
@@ -16,7 +16,7 @@ dotnet new xunit --name CalculadoraConsole.Tests --output CalculadoraConsole.Tes
 
 Esse comando cria uma estrutura inicial de testes com o framework xUnit.
 
-## 2. Adicionar o projeto de testes à solução
+### 2. Adicionar o projeto de testes à solução
 
 Inclua o projeto de testes na solução da calculadora:
 
@@ -24,7 +24,7 @@ Inclua o projeto de testes na solução da calculadora:
 dotnet sln Calculadora.sln add CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
 ```
 
-## 3. Adicionar referência ao projeto da calculadora
+### 3. Adicionar referência ao projeto da calculadora
 
 Agora, conecte o projeto de teste ao projeto principal da aplicação para que a classe `Calculadora` possa ser acessada pelos testes:
 
@@ -32,11 +32,11 @@ Agora, conecte o projeto de teste ao projeto principal da aplicação para que a
 dotnet add CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj reference CalculadoraConsole/CalculadoraConsole.csproj
 ```
 
-## 4. Verificar se a referência foi criada corretamente
+### 4. Verificar se a referência foi criada corretamente
 
 Abra o arquivo `.csproj` do projeto de testes e confirme se existe uma referência ao projeto da calculadora.
 
-## 5. Executar a build do projeto de testes
+### 5. Executar a build do projeto de testes
 
 Compile o projeto de testes e a referência da calculadora:
 
@@ -46,7 +46,7 @@ dotnet build CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
 
 Se tudo estiver correto, a build deve terminar sem erros.
 
-## 6. Executar os testes
+### 6. Executar o teste simples do template
 
 Para rodar os testes criados, use:
 
@@ -54,9 +54,11 @@ Para rodar os testes criados, use:
 dotnet test CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
 ```
 
-## 7. Primeiro teste unitário: Soma
+## Atividade 2 — Criar e executar o primeiro teste de soma
 
-No projeto xUnit criado acima, substitua o conteúdo do arquivo `CalculadoraConsole.Tests/UnitTest1.cs` pelo exemplo abaixo:
+Nesta atividade, crie seu primeiro teste unitário: copie o trecho de código abaixo e cole no arquivo `CalculadoraConsole.Tests/UnitTest1.cs`, substituindo o conteúdo existente. Em seguida, salve o arquivo e execute o teste.
+
+### Teste de soma
 
 ```csharp
 using Xunit;
@@ -82,7 +84,7 @@ namespace CalculadoraConsole.Tests
 - compara o resultado obtido com o valor esperado
 - usa `Assert.Equal` para confirmar que a operação está correta
 
-## 8. Rodar o teste individual
+### Executar o teste
 
 Depois de salvar o arquivo, execute:
 
@@ -92,30 +94,26 @@ dotnet test CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
 
 Se o teste estiver correto, a saída no terminal deve indicar sucesso.
 
-## 9. Próximo passo
+## Atividade 3 — Expandir os testes das operações
 
-Repita esse mesmo padrão para criar testes das outras operações:
+Agora, amplie os testes da classe `Calculadora`. Crie três testes para cada operação — soma, subtração, multiplicação e divisão — totalizando 12 cenários. Use combinações diferentes de valores para cobrir resultados positivos, negativos e zero, conforme indicado abaixo.
 
-- subtração
-- multiplicação
-- divisão
+Use os valores e resultados esperados abaixo:
 
-Crie um teste para cada método público da classe `Calculadora` e valide o resultado esperado em cada caso.
+| Operação | Cenário | Valores | Resultado esperado |
+|---|---:|---|---|
+| Soma | 1 | `2m` e `3m` | `5m` |
+| Soma | 2 | `-4m` e `6m` | `2m` |
+| Soma | 3 | `0m` e `7m` | `7m` |
+| Subtração | 1 | `8m` e `3m` | `5m` |
+| Subtração | 2 | `3m` e `8m` | `-5m` |
+| Subtração | 3 | `5m` e `5m` | `0m` |
+| Multiplicação | 1 | `4m` e `3m` | `12m` |
+| Multiplicação | 2 | `-2m` e `3m` | `-6m` |
+| Multiplicação | 3 | `5m` e `0m` | `0m` |
+| Divisão | 1 | `12m` e `3m` | `4m` |
+| Divisão | 2 | `-10m` e `2m` | `-5m` |
+| Divisão | 3 | `5m` e `0m` | ??? |
 
-## Dica
 
-Procure manter nomes de testes claros e objetivos, por exemplo:
-
-- `Soma_DeveSomarDoisValores()`
-- `Subtracao_DeveSubtrairDoisValores()`
-- `Multiplicacao_DeveMultiplicarDoisValores()`
-- `Divisao_DeveDividirDoisValores()`
-
-## Objetivo final
-
-Ao final deste exercício, você deve ter:
-
-- um projeto de testes xUnit configurado;
-- referência correta ao projeto da calculadora;
-- testes automatizados para as operações matemáticas;
-- execução bem-sucedida com `dotnet test`.
+---
