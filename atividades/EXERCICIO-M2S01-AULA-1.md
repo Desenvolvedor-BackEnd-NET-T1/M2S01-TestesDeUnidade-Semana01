@@ -54,6 +54,8 @@ Para rodar os testes criados, use:
 dotnet test CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
 ```
 
+---
+
 ## Atividade 2 — Criar e executar o primeiro teste de soma
 
 Nesta atividade, crie seu primeiro teste unitário: copie o trecho de código abaixo e cole no arquivo `CalculadoraConsole.Tests/UnitTest1.cs`, substituindo o conteúdo existente. Em seguida, salve o arquivo e execute o teste.
@@ -93,6 +95,8 @@ dotnet test CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
 ```
 
 Se o teste estiver correto, a saída no terminal deve indicar sucesso.
+
+---
 
 ## Atividade 3 — Expandir os testes das operações
 
