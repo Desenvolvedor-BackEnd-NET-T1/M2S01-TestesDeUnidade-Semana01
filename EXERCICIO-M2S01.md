@@ -16,7 +16,15 @@ dotnet new xunit --name CalculadoraConsole.Tests --output CalculadoraConsole.Tes
 
 Esse comando cria uma estrutura inicial de testes com o framework xUnit.
 
-## 2. Adicionar referência ao projeto da calculadora
+## 2. Adicionar o projeto de testes à solução
+
+Inclua o projeto de testes na solução da calculadora:
+
+```bash
+dotnet sln Calculadora.sln add CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
+```
+
+## 3. Adicionar referência ao projeto da calculadora
 
 Agora, conecte o projeto de teste ao projeto principal da aplicação para que a classe `Calculadora` possa ser acessada pelos testes:
 
@@ -24,11 +32,11 @@ Agora, conecte o projeto de teste ao projeto principal da aplicação para que a
 dotnet add CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj reference CalculadoraConsole/CalculadoraConsole.csproj
 ```
 
-## 3. Verificar se a referência foi criada corretamente
+## 4. Verificar se a referência foi criada corretamente
 
 Abra o arquivo `.csproj` do projeto de testes e confirme se existe uma referência ao projeto da calculadora.
 
-## 4. Executar a build do projeto de testes
+## 5. Executar a build do projeto de testes
 
 Compile o projeto de testes e a referência da calculadora:
 
@@ -38,7 +46,7 @@ dotnet build CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
 
 Se tudo estiver correto, a build deve terminar sem erros.
 
-## 5. Executar os testes
+## 6. Executar os testes
 
 Para rodar os testes criados, use:
 
@@ -46,7 +54,7 @@ Para rodar os testes criados, use:
 dotnet test CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
 ```
 
-## 6. Primeiro teste unitário: Soma
+## 7. Primeiro teste unitário: Soma
 
 No projeto xUnit criado acima, substitua o conteúdo do arquivo `CalculadoraConsole.Tests/UnitTest1.cs` pelo exemplo abaixo:
 
@@ -74,7 +82,7 @@ namespace CalculadoraConsole.Tests
 - compara o resultado obtido com o valor esperado
 - usa `Assert.Equal` para confirmar que a operação está correta
 
-## 7. Rodar o teste individual
+## 8. Rodar o teste individual
 
 Depois de salvar o arquivo, execute:
 
@@ -84,7 +92,7 @@ dotnet test CalculadoraConsole.Tests/CalculadoraConsole.Tests.csproj
 
 Se o teste estiver correto, a saída no terminal deve indicar sucesso.
 
-## 8. Próximo passo
+## 9. Próximo passo
 
 Repita esse mesmo padrão para criar testes das outras operações:
 
