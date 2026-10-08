@@ -23,6 +23,12 @@ Na raiz do projeto, rode:
 dotnet run --project CalculadoraConsole
 ```
 
+## Como depurar os testes no VS Code
+
+Instale a extensão **C# Dev Kit** recomendada para este workspace e compile a solução. Depois, abra o **Test Explorer** (ícone de béquer), atualize a lista de testes e selecione **Debug Test** no teste desejado. Também é possível usar a opção **Debug Test** exibida acima do método de teste no editor.
+
+Testes marcados com `Skip` não são executados nem podem ser depurados; use um teste habilitado.
+
 ## Como usar
 
 Ao iniciar a aplicação, o programa exibe um menu com as operações disponíveis:

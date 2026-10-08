@@ -25,7 +25,19 @@ public static class Calculadora
 
     public static decimal Soma(decimal valor1, decimal valor2)
     {
-        return valor1 + valor2;
+        try
+        {
+            if (valor1 < 0 || valor2 < 0)
+            {
+                throw new ArgumentException("Valores não podem ser negativos.");
+            }
+
+            return valor1 + valor2;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Ocorreu um erro na soma: " + ex.Message);
+        }
     }
 
     public static decimal Subtracao(decimal valor1, decimal valor2)
